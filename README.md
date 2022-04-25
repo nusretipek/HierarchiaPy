@@ -1,3 +1,6 @@
+[![Build Status](https://app.travis-ci.com/nusretipek/HierarchiaPy.svg?branch=master)](https://app.travis-ci.com/nusretipek/HierarchiaPy)
+
+------------------------------------------------
 <p align="center">
   <img src="docs/pictures/logo.png" width="500">
 </p>
