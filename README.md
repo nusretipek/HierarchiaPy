@@ -1,4 +1,5 @@
 [![Build Status](https://app.travis-ci.com/nusretipek/HierarchiaPy.svg?branch=master)](https://app.travis-ci.com/nusretipek/HierarchiaPy)
+[![LICENCE](https://img.shields.io/github/license/nusretipek/HierarchiaPy)](https://github.com/nusretipek/HierarchiaPy/blob/master/LICENSE)
 
 ------------------------------------------------
 <p align="center">
