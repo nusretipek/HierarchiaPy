@@ -60,7 +60,7 @@ def test_hierarchia_args_kwargs():
 # Elo test
 
 def test_elo():
-    hier_mat = Hierarchia(mat, name_seq=['a', 'b', 'c', 'd', 'e'])
-    elo_ranks = hier_mat.elo()
+    hier_df = Hierarchia(df, 'winner', 'loser')
+    elo_ranks = hier_df.elo()
     assert (isinstance(elo_ranks, dict))
-    assert (len(elo_ranks) == len(hier_mat.indices))
+    assert (len(elo_ranks) == len(hier_df.indices))
