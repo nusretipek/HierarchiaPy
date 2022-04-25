@@ -30,6 +30,7 @@ INSTALL_REQUIRES = [
     "networkx>=2.0"
 ]
 
+PACKAGES=['HierarchiaPy']
 CLASSIFIERS = [
               "Development Status :: 2 - Pre-Alpha",
               "Programming Language :: Python :: 3",
@@ -57,6 +58,7 @@ if __name__ == "__main__":
           long_description=LONG_DESC,
           long_description_content_type=LONG_DESC_TYPE,
           license=LICENSE,
+          packages=PACKAGES,
           url=URL,
           download_url=URL,
           install_requires=INSTALL_REQUIRES,
