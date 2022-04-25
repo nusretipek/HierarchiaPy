@@ -86,4 +86,4 @@ class Hierarchia:
 
         # import methods
         
-        from HierarchiaPy import models
+        from HierarchiaPy import methods
