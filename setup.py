@@ -30,7 +30,7 @@ INSTALL_REQUIRES = [
     "networkx>=2.0"
 ]
 
-PACKAGES=["HierarchiaPy", "methods"]
+PACKAGES=["HierarchiaPy"]
 CLASSIFIERS = [
               "Development Status :: 2 - Pre-Alpha",
               "Programming Language :: Python :: 3",
