@@ -1,5 +1,6 @@
 [![Build Status](https://app.travis-ci.com/nusretipek/HierarchiaPy.svg?branch=master)](https://app.travis-ci.com/nusretipek/HierarchiaPy)
 [![LICENCE](https://img.shields.io/github/license/nusretipek/HierarchiaPy)](https://github.com/nusretipek/HierarchiaPy/blob/master/LICENSE)
+[![codecov](https://codecov.io/gh/nusretipek/HierarchiaPy/branch/master/graph/badge.svg?token=vJeHuZ2Znv)](https://codecov.io/gh/nusretipek/HierarchiaPy)
 
 ------------------------------------------------
 <p align="center">
