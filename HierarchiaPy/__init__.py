@@ -4,4 +4,3 @@ name = 'HierarchiaPy'
 __version__ = "0.1.0"
 
 from .HierarchiaPy import Hierarchia
-import methods
