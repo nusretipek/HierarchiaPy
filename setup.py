@@ -27,7 +27,7 @@ INSTALL_REQUIRES = [
     "scipy>=1.7",
     "pandas>=1.0",
     "matplotlib>=3.0.2",
-    "networkx>=2.8"
+    "networkx>=2.0"
 ]
 
 CLASSIFIERS = [
