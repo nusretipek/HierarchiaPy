@@ -87,5 +87,5 @@ class Hierarchia:
 
         # import methods
 
-        from methods._elo import elo
-        from methods._randomized_elo import randomized_elo
+        from .methods._elo import elo
+        from .methods._randomized_elo import randomized_elo
