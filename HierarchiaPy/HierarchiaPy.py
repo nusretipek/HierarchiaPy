@@ -4,7 +4,7 @@ import pandas as pd
 
 
 # Define HierarchiaPy class
-class HierarchiaPy:
+class Hierarchia:
 
     def __init__(self, *args, **kwargs):
 
