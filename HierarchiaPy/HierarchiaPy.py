@@ -86,4 +86,4 @@ class Hierarchia:
 
         # import methods
         
-        import .methods
+        import methods
