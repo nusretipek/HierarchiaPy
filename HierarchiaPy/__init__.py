@@ -1,4 +1,3 @@
-
 # HierarchiaPy - Statistical tool to calculate dominance/hierarchy 
 
 name = 'HierarchiaPy'
