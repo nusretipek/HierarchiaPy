@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 
+
 # Define HierarchiaPy class
 class Hierarchia:
 
@@ -84,7 +85,7 @@ class Hierarchia:
             self.mat = self.cross_tab_df.to_numpy()
             self.indices = list(self.cross_tab_df.columns)
 
-        # import methods
-        
-        from .methods._elo import elo
-        from .methods._randomized_elo import randomized_elo
+    # import methods
+
+    from .methods._elo import elo
+    from .methods._randomized_elo import randomized_elo
