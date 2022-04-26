@@ -6,7 +6,7 @@ ELO Rating
 
 .. autofunction:: HierarchiaPy.HierarchiaPy.methods._elo.elo
 
-Otherwise, :py:func:`HierarchiaPy.HierarchiaPy/methods/_elo.elo` will raise an exception.
+Otherwise, :py:func:`_elo.elo` will raise an exception.
 
 For example:
 
