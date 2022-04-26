@@ -4,9 +4,9 @@ Methods
 ELO Rating
 -------------------------------
 
-.. autofunction:: /HierarchiaPy/HierarchiaPy/methods/_elo.elo
+.. autofunction:: HierarchiaPy.HierarchiaPy.methods._elo.elo
 
-Otherwise, :py:func:`HierarchiaPy/HierarchiaPy/methods/_elo.elo` will raise an exception.
+Otherwise, :py:func:`HierarchiaPy.HierarchiaPy/methods/_elo.elo` will raise an exception.
 
 For example:
 
