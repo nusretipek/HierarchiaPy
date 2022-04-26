@@ -30,7 +30,8 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon'
+    'sphinx_rtd_theme',
+    'sphinx.ext.napoleon',
 ]
 
 source_suffix = '.rst'
