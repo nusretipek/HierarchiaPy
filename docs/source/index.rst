@@ -1,4 +1,4 @@
-Welcome to Lumache's documentation!
+Welcome to HierarchiaPy's documentation!
 ===================================
 
 **HierarchiaPy** is an optimized statistical package for hierarchy/dominance analysis methds.
@@ -13,4 +13,3 @@ Contents
    
    intro
    getting-started
-   methods
