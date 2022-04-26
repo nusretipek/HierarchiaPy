@@ -11,15 +11,16 @@
 
 1. ELO rating
 2. Randomized ELO rating
+3. David's Scores
+2. Average Dominance Index
+3. Adagio
+4. I&SI 98
 
 -----------------------------------------------
 
 **Methods that need refactoring**
 
-1. David's Scores
-2. Averrage Dominance Index
-3. Adagio
-4. I&SI 98
+
 
 **Planned to be included**
 
