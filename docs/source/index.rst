@@ -13,3 +13,4 @@ Contents
    
    intro
    getting-started
+   methods
