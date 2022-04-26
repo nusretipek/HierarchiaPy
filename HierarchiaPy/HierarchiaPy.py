@@ -89,3 +89,8 @@ class Hierarchia:
 
     from .methods._elo import elo
     from .methods._randomized_elo import randomized_elo
+    from .methods._adagio import adagio
+    from .methods._average_dominance_index import average_dominance_index
+    from .methods._davids_score import davids_score
+    from .methods._ISI98 import ISI98
+    
