@@ -7,11 +7,6 @@ toctree::
    :caption: Contents:
 
    getting-started
-   CONTRIBUTING
-   CODE_OF_CONDUCT
-
-   CHANGELOG
-
 
 Indices and tables
 ==================
