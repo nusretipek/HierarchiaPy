@@ -13,14 +13,16 @@ Example:
 
 .. code-block:: python
 
->>> test_matrix = np.array([[0, 6, 9, 8, 5],
-                            [0, 0, 4, 6, 0],
-                            [0, 2, 0, 4, 7],
-                            [1, 0, 5, 0, 3],
-                            [0, 0, 2, 3, 0]], dtype='float32')                           
->>> {elo}                         
-                        
+>>> df = pd.DataFrame({'winner': ['c', 'a', 'a', 'b', 'd', 'b', 'a', 'c', 'b'],
+                   'loser': ['a', 'b', 'b', 'a', 'c', 'd', 'b', 'b', 'a']}) 
+                   
+>>> hierarchia = Hierarchia(df, 'winner', 'loser')
+>>> elo_ratings = hierarchia.elo(start_value=1000, K=100, normal_probability=False)                           
+>>> print(elo_ratings)   
 
+>>> {'a': 971.0723573778384, 'b': 993.3936875304955, 'c': 1040.4209641361497, 'd': 995.1129909555166}
+                        
+                        
 Randomized ELO Rating
 ------------------------------
 
