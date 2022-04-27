@@ -11,13 +11,13 @@ def elo(self, start_value=1000, K=100, normal_probability=False):
     :param start_value: float
         Parameter of the Elo function that determines the initial scores. It does not have
         an effect on relative differences after the calculation. (1000)
-    :param normal_probability: Boolean
-        Adjust the calculation of expected win/loss probabilities; default is Logistic (False),
-        the normal probabilities are calculated using standard normal tables (True). For normalised probabilities,
-        refer to https://handbook.fide.com
     :param K: float
         Parameter of the Elo function that acts as a factor and determines the speed at which scores change
         after an interaction. Optimization might be a good idea but not implemented yet. (100)
+    :param normal_probability: Boolean
+        Adjust the calculation of expected win/loss probabilities; default is Logistic,
+        the normal probabilities are calculated using standard normal tables. For normalised probabilities,
+        refer to https://handbook.fide.com (False)
 
     Returns
     -------
@@ -52,10 +52,6 @@ def elo(self, start_value=1000, K=100, normal_probability=False):
       Elo-rating as a tool in the sequential estimation of dominance strengths.
       Animal Behaviour, 61, 489-495. (DOI: 10.1006/anbe.2000.1571)
 
-    Examples
-    --------
-    1. TBC
-    
     """
 
     # check whether Pandas dataframe provided
