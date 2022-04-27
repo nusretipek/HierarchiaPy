@@ -1,7 +1,50 @@
 import numpy as np
 
 
-def ISI98(self, runs=500, verbose=False):
+def ISI98(self, runs=1000, verbose=False):
+
+    """I&SI 1998 from an interaction dataframe/matrix.
+
+    Parameters
+    ----------
+    :param self: reference to the current instance of the class
+
+    :param runs: integer
+        Parameter to adjust number of iterations for random ordering. Higher numbers result increase chance of
+        finding the best sequence. Original paper suggests as low as 100 runs but our package use default 1000. (1000)
+
+    :param verbose: boolean
+        Print initial, intermediate and final inconsistencies, strength of inconsistencies and matrices. Used for
+        detailed output of computational process.
+
+    Returns
+    -------
+    best_seq : list
+        Rankings from the I&SI 1998 algorithm, optimality cannot be guaranteed due to random search but given high
+        number of runs, it should be stable. Outputs the ordered rankings.
+
+    See also
+    --------
+    https://numpy.org/doc/stable/reference/generated/numpy.triu.html
+
+    Notes
+    -----
+    Two criteria are used in a prioritized way in reorganizing the dominance matrix to find an
+    order that is most consistent with a linear hierarchy: first, minimization of the numbers of inconsistencies
+    and, second, minimization of the total strength of the inconsistencies. The linear ordering
+    procedure, which involves an iterative algorithm based on a generalized swapping rule, is feasible for
+    matrices of up to 80 individuals. The procedure can be applied to any dominance matrix, since it does
+    not make any assumptions about the form of the probabilities of winning and losing. The only
+    assumption is the existence of a linear or near-linear hierarchy which can be verified by means of a
+    linearity test. (de Vries, 1998)
+
+    References
+    ----------
+    * de Vries, H. 1998 Finding a dominance order most consistent with a linear hierarchy:
+      a new procedure and review. Animal Behaviour, 55, 827-843
+
+    """
+
     mat = self.mat.astype('int64')
 
     def swap_column_2d(arr, index_x, index_y):
