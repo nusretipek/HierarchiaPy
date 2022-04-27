@@ -3,7 +3,7 @@ import numpy as np
 
 def davids_score(self):
 
-    """David's scores from an interaction dataframe.
+    """David's scores from an interaction dataframe/matrix..
 
     Parameters
     ----------
