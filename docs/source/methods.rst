@@ -11,12 +11,13 @@ The Hierarchia class should be initiated with a Pandas Dataframe since the metho
 
 Example:
 
+.. code-block:: python
+
 >>> test_matrix = np.array([[0, 6, 9, 8, 5],
                             [0, 0, 4, 6, 0],
                             [0, 2, 0, 4, 7],
                             [1, 0, 5, 0, 3],
-                            [0, 0, 2, 3, 0]], dtype='float32')
-                            
+                            [0, 0, 2, 3, 0]], dtype='float32')                           
 >>> {elo}                         
                         
 
