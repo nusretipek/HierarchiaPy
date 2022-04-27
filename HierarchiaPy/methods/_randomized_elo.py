@@ -10,15 +10,19 @@ def randomized_elo(self, start_value=1000, K=100, n=1000, normal_probability=Fal
     Parameters
     ----------
     :param self: reference to the current instance of the class
+    
     :param start_value: float
         Parameter of the Elo function that determines the initial scores. It does not have
         an effect on relative differences after the calculation. (1000)
+        
     :param K: float
         Parameter of the Elo function that acts as a factor and determines the speed at which scores change
         after an interaction. Optimization might be a good idea but not implemented yet. (100)
+        
     :param n: integer
         Parameter to adjust number of iterations for random ordering. Higher numbers result in more stable Elo ratings.
         The number of random orders. (1000)
+        
     :param normal_probability: Boolean
         Adjust the calculation of expected win/loss probabilities; default is Logistic,
         the normal probabilities are calculated using standard normal tables. For normalised probabilities,
