@@ -78,4 +78,4 @@ def elo(self, start_value=1000, K=100, normal_probability=False):
         elo_dict[row[self.loser_col]] += (-K * expected_loser)
 
     # return final elo scores dictionary
-    return elo_dict
+    return {key: round(elo_dict[key], 4) for key in elo_dict}
