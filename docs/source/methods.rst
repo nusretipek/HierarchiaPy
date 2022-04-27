@@ -20,10 +20,12 @@ Example:
    elo_ratings = hierarchia.elo(start_value=1000, K=100, normal_probability=False)                           
    print(elo_ratings)   
 
+Result:
+
 .. code-block:: python
    :linenos:
   
-   {'a': 971.0723573778384, 'b': 993.3936875304955, 'c': 1040.4209641361497, 'd': 995.1129909555166}
+   {'a': 971.0724, 'b': 993.3937, 'c': 1040.421, 'd': 995.113}
                         
                         
 Randomized ELO Rating
