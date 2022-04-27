@@ -15,7 +15,7 @@ def ISI98(self, runs=1000, verbose=False):
 
     :param verbose: boolean
         Print initial, intermediate and final inconsistencies, strength of inconsistencies and matrices. Used for
-        detailed output of computational process.
+        detailed output of computational process. (False)
 
     Returns
     -------
