@@ -42,8 +42,6 @@ def randomized_elo(self, start_value=1000, K=100, n=1000, normal_probability=Fal
 
     Notes
     -----
-    From A practical guide for inferring reliable dominance hierarchies and estimating their uncertainty:
-
     A practical guide for inferring reliable dominance hierarchies and estimating their uncertainty
     However, most behavioural studies assume that individual dominance rank is relatively stable over time.
     We propose an improvement of the original Elo-rating based on randomizing the order in which interactions 
