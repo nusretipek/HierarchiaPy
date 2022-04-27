@@ -14,8 +14,7 @@ Example:
 .. code-block:: python
 
 >>> df = pd.DataFrame({'winner': ['c', 'a', 'a', 'b', 'd', 'b', 'a', 'c', 'b'],
-                   'loser': ['a', 'b', 'b', 'a', 'c', 'd', 'b', 'b', 'a']}) 
-                   
+                   'loser': ['a', 'b', 'b', 'a', 'c', 'd', 'b', 'b', 'a']})               
 >>> hierarchia = Hierarchia(df, 'winner', 'loser')
 >>> elo_ratings = hierarchia.elo(start_value=1000, K=100, normal_probability=False)                           
 >>> print(elo_ratings)   
