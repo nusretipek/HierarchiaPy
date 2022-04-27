@@ -94,4 +94,4 @@ def randomized_elo(self, start_value=1000, K=100, n=1000, normal_probability=Fal
     for key in elo_dict_master:
         elo_dict_master[key] = sum(elo_dict_master[key]) / len(elo_dict_master[key])
 
-    return elo_dict_master
+    return {key: round(elo_dict_master[key], 4) for key in elo_dict_master}
