@@ -33,6 +33,7 @@ def elo(self, start_value=1000, K=100, normal_probability=False):
     Notes
     -----
     From Wikipedia:
+    
     The Elo rating system is a method for calculating the relative skill levels of players
     in zero-sum games such as chess. It is named after its creator Arpad Elo, a Hungarian-American physics professor.
     The Elo system was originally invented as an improved chess-rating system over the previously used Harkness system,
