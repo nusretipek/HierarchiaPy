@@ -22,6 +22,9 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'numpydoc',
+    'sphinx_panels',
+    'sphinx.ext.githubpages'
 ]
 
 intersphinx_mapping = {
