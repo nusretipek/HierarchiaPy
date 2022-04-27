@@ -12,7 +12,7 @@ The Hierarchia class should be initiated with a Pandas Dataframe since the metho
 Example:
 
 .. code-block:: python
-:lineos:
+:linenos:
   df = pd.DataFrame({'winner': ['c', 'a', 'a', 'b', 'd', 'b', 'a', 'c', 'b'],
                        'loser': ['a', 'b', 'b', 'a', 'c', 'd', 'b', 'b', 'a']})               
   hierarchia = Hierarchia(df, 'winner', 'loser')
@@ -20,7 +20,7 @@ Example:
   print(elo_ratings)   
 
 .. code-block:: python
-  :lineos:
+  :linenos:
   {'a': 971.0723573778384, 'b': 993.3936875304955, 'c': 1040.4209641361497, 'd': 995.1129909555166}
                         
                         
