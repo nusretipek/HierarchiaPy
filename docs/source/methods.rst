@@ -130,30 +130,6 @@ Result:
   
    {0: 0, 1: 1, 3: 2, 2: 3, 4: 4}
 
-ADAGIO
--------------------------------
-
-.. autofunction:: _adagio.adagio 
-
-Example:
-
-.. code-block:: python
-   :linenos:
-
-    mat = np.array([[0, 6, 9, 8, 5],
-                    [0, 0, 4, 6, 0],
-                    [0, 2, 0, 4, 7],
-                    [1, 0, 5, 0, 3],
-                    [0, 0, 2, 3, 0]], dtype='float32')
-    hier_mat = Hierarchia(mat, name_seq=['a', 'b', 'c','d','e'])
-    adagio_ranks = hier_mat.adagio(preprocessing=True, plot_network=False, rank='top')
-    print(adagio_ranks)  
-
-Result:
-
-.. code-block:: python
-  
-   {0: 0, 1: 1, 3: 2, 2: 3, 4: 4}
                         
 I&SI (1998)
 -------------------------------
