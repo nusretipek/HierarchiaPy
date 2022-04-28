@@ -19,9 +19,9 @@ def ISI98(self, runs=1000, verbose=False):
 
     Returns
     -------
-    best_seq : list
-        Rankings from the I&SI 1998 algorithm, optimality cannot be guaranteed due to random search but given high
-        number of runs, it should be stable. Outputs the ordered rankings.
+    rank_dict : dict
+        Rankings from the I&SI 1998 algorithm. Keys are identification of individuals (see name_seq) and 
+        the values are the ranks. 
 
     See also
     --------
