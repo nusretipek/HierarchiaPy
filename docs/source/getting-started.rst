@@ -17,7 +17,7 @@ Hierarchia Class
 
 .. autoclass:: HierarchiaPy.Hierarchia
 
-.. autofunction:: HierarchiaPy.__init__
+.. autofunction:: HierarchiaPy.Hierarchia.__init__
 
 .. note::
   Initialization via Pandas Dataframe - Required to have two more arguments: Winner and Loser Column names
