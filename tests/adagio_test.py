@@ -16,7 +16,7 @@ mat = np.array([[0, 1, 2, 0, 0, 0],
 ## ADAGIO PAPER DATASET ##
 ########################
 
-# Randomized Elo test
+# ADAGIO Elo test
 
 def test_adagio_topological():
     hier_mat = HierarchiaPy(mat, np.array(['a', 'b', 'c', 'd', 'e', 'f']))
