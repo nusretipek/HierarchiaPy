@@ -4,12 +4,19 @@ Getting Started
 Installation
 -------------------------------
 
-To install the HierarchiaPy library, use the pip;
+**Using the pip**
 
 .. code-block:: console
    :linenos:
    
    $ pip install hierarchiapy
+   
+**Using the Git & Pip**
+
+.. code-block:: console
+   :linenos:
+   
+   $ !pip install git+https://github.com/nusretipek/HierarchiaPy.git
 
 
 Hierarchia Class
