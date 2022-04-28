@@ -155,7 +155,7 @@ Result:
 Basic Usage
 -------------------------------
 
-*See methods section for the comprehenssive list of available methods**
+*See methods section for the comprehenssive list of available methods*
 
 .. code-block:: python
    :linenos:
