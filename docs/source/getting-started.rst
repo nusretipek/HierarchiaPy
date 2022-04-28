@@ -89,7 +89,7 @@ Examples: 2D NumPy (Matrix) Initialization
     
 .. note::
 
-  Initialization via 2D Numpy - Require to be symmetric (n x n)
+  Initialization via 2D Numpy - Required to be symmetric (n x n)
 
 **Intialization with only NumPy 2D array**
 
