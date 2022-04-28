@@ -71,11 +71,12 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
 
         for idx in range(len(min_edges[0])):
             network_graph.remove_edge(list(largest)[min_edges[0][idx]], list(largest)[min_edges[1][idx]])
+            mat[list(largest)[min_edges[0][idx]], list(largest)[min_edges[1][idx]]] = 0
 
         largest = max(nx.strongly_connected_components(network_graph), key=len)
 
     if rank == 'topological':
-        return {element: idx for idx, element in enumerate(list(nx.topological_sort(network_graph)))}
+        return {self.indices[element]: idx for idx, element in enumerate(list(nx.topological_sort(network_graph)))}
     elif rank == 'top':
         level_ranked = []
         rank_dict = {}
@@ -96,7 +97,7 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
                     level_ranked.append(topologically_sorted_nodes[0])
                     topologically_sorted_nodes.pop(0)
         for element in level_ranked:
-            rank_dict[element] = i + 1
+            rank_dict[self.indices[element]] = i + 1
         return rank_dict
     elif rank == 'bottom':
         level_ranked = []
@@ -119,7 +120,7 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
                     topologically_sorted_nodes.pop(0)
         i += 1
         for element in level_ranked:
-            rank_dict[element] = i
+            rank_dict[self.indices[element]] = i
         return {key: abs(rank_dict[key] - i) for key in rank_dict}
     else:
         raise ValueError('Enter a valid rank: ["topological", "top", "bottom"]')
