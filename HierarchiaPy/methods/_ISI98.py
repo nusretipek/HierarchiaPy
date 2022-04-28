@@ -146,4 +146,4 @@ def ISI98(self, runs=1000, verbose=False):
         print('Matrix after final phase: \n')
         print(best_mat)
 
-    return best_seq
+    return {key: idx for idx, key in enumerate(best_seq)}
