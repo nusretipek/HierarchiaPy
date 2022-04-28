@@ -39,11 +39,11 @@ CLASSIFIERS = [
               "Programming Language :: Python :: 3.8",
               "Programming Language :: Python :: 3.9",
               "License :: OSI Approved :: MIT License",
-              "Topic :: Sociology"
+              "Topic :: Sociology",
               "Intended Audience :: Science/Research",
               "Operating System :: Microsoft :: Windows",
               "Operating System :: Unix",
-              "Operating System :: MacOS"
+              "Operating System :: MacOS",
 ]
 
 # Setup
