@@ -96,8 +96,9 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
                     level_ranked.append(topologically_sorted_nodes[0])
                     topologically_sorted_nodes.pop(0)
         for element in level_ranked:
-            rank_dict[self.indices[element]] = i + 1
-        return rank_dict
+            rank_dict[element] = i + 1
+        print('Milliseconds of calculation: ', time.time() - milliseconds)
+        return {self.indices[element]: rank_dict[element] for element in rank_dict}
     elif rank == 'bottom':
         level_ranked = []
         rank_dict = {}
@@ -119,7 +120,8 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
                     topologically_sorted_nodes.pop(0)
         i += 1
         for element in level_ranked:
-            rank_dict[self.indices[element]] = i
-        return {key: abs(rank_dict[key] - i) for key in rank_dict}
+            rank_dict[element] = i
+        rank_dict = {key: abs(rank_dict[key] - i) for key in rank_dict}
+        return {self.indices[element]: rank_dict[element] for element in rank_dict}
     else:
         raise ValueError('Enter a valid rank: ["topological", "top", "bottom"]')
