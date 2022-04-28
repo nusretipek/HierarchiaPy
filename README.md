@@ -5,7 +5,7 @@
 
 ------------------------------------------------
 <p align="center">
-  <img src="docs/pictures/logo.png" width="500">
+  <img src="https://github.com/nusretipek/HierarchiaPy/blob/master/docs/pictures/logo.png" width="500">
 </p>
 
 
