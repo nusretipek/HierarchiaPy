@@ -7,7 +7,8 @@ Installation
 To install the HierarchiaPy library, use the pip;
 
 .. code-block:: console
-
+   :linenos:
+   
    $ pip install hierarchiapy
 
 
@@ -16,9 +17,15 @@ Hierarchia Class
 
 .. autoclass:: HierarchiaPy.Hierarchia
 
-The Hierarchia class should be initiated with a Pandas Dataframe since the method relies on the order of the interactions. 
+.. autofunction:: HierarchiaPy.__init__
 
-Example:
+.. note::
+  Initialization via Pandas Dataframe - Required to have two more arguments: Winner and Loser Column names
+  Initialization via 2D Numpy - Require to be symmetric (n x n)
+  
+
+Examples: Hierarchia Class
+-------------------------------
 
 .. code-block:: python
    :linenos:
