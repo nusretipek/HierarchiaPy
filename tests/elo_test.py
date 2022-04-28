@@ -36,7 +36,10 @@ def test_elo_normal():
 
 # Value Error
 
+def my_func_error():
+    hier_mat = Hierarchia(mat)
+    hier_mat.elo()
+   
 def elo_value_error():
     with pytest.raises(ValueError):
-        hier_mat = Hierarchia(mat)
-        hier_mat.elo()
+        my_func_error()
