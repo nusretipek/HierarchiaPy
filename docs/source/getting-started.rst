@@ -26,11 +26,13 @@ Hierarchia Class
 
 .. autofunction:: HierarchiaPy.Hierarchia.__init__
 
-**Examples: Pandas DataFrame Initialization** 
+Examples: Pandas DataFrame Initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
   Initialization via Pandas Dataframe - Required to have two more arguments: Winner and Loser Column names
   
+**Intialization with variable list of arguments**
 
 .. code-block:: python
    :linenos:
@@ -45,6 +47,18 @@ Hierarchia Class
    
    print(hier_df.mat)
    print(hier_df.indices)
+
+Result:
+
+.. code-block:: python
+
+   [[0 3 0 0]
+    [2 0 0 1]
+    [1 1 0 0]
+    [0 0 1 0]]
+   ['a', 'b', 'c', 'd']
+
+**Intialization with keyword list of arguments**
 
 .. code-block:: python
    :linenos:
@@ -70,11 +84,14 @@ Result:
     [0 0 1 0]]
    ['a', 'b', 'c', 'd']
    
-**Examples: 2D NumPy (Matrix) Initialization** 
+Examples: 2D NumPy (Matrix) Initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 .. note::
 
   Initialization via 2D Numpy - Require to be symmetric (n x n)
+
+**Intialization with only NumPy 2D array**
 
 .. code-block:: python
    :linenos:
@@ -104,6 +121,8 @@ Result:
     [0. 0. 2. 3. 0.]]
    [0 1 2 3 4]
 
+**Intialization with NumPy 2D array and name sequence**
+
 .. code-block:: python
    :linenos:
    
@@ -132,6 +151,7 @@ Result:
     [0. 0. 2. 3. 0.]]
    ['a', 'b', 'c', 'd', 'e']
    
+
 Basic Usage
 -------------------------------
 
@@ -159,6 +179,4 @@ Result:
 .. code-block:: python
   
    {'a': 8.4444, 'b': 1.6111, 'c': -2.3333, 'd': -3.6667, 'e': -4.0556}
-   
-   
-             
+    
