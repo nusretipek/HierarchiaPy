@@ -2,6 +2,7 @@
 [![LICENCE](https://img.shields.io/github/license/nusretipek/HierarchiaPy)](https://github.com/nusretipek/HierarchiaPy/blob/master/LICENSE)
 [![codecov](https://codecov.io/gh/nusretipek/HierarchiaPy/branch/master/graph/badge.svg?token=vJeHuZ2Znv)](https://codecov.io/gh/nusretipek/HierarchiaPy)
 [![Documentation Status](https://readthedocs.org/projects/hierarchiapy/badge/?version=latest)](https://hierarchiapy.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/HierarchiaPy.svg)](https://badge.fury.io/py/HierarchiaPy)
 
 ------------------------------------------------
 <p align="center">
