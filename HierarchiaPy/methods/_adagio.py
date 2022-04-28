@@ -47,8 +47,7 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
     References
     ----------
     * Douglas, P. H., Ngomo, A. C. N., & Hohmann, G. (2017). A novel approach for dominance assessment in gregarious
-      species: ADAGIO. Animal Behaviour, 123, 21-32.    * Elo, A. E. 1978. The Rating of Chess Players,
-      Past and Present. New York: Arco.
+      species: ADAGIO. Animal Behaviour, 123, 21-32.    
 
     """
 
