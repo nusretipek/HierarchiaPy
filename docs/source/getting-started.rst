@@ -131,4 +131,34 @@ Result:
     [1. 0. 5. 0. 3.]
     [0. 0. 2. 3. 0.]]
    ['a', 'b', 'c', 'd', 'e']
+   
+Basic Usage
+-------------------------------
+
+*See methods section for the comprehenssive list of available methods**
+
+.. code-block:: python
+   :linenos:
+   
+   from HierarchiaPy import Hierarchia
+   import numpy as np
+  
+   mat = np.array([[0, 6, 9, 8, 5],
+                   [0, 0, 4, 6, 0],
+                   [0, 2, 0, 4, 7],
+                   [1, 0, 5, 0, 3],
+                   [0, 0, 2, 3, 0]], dtype='float32') 
+                   
+   hier_mat = Hierarchia(mat, name_seq=['a', 'b', 'c', 'd', 'e'])
+   
+   davids_scores = hier_mat.davids_score()
+   print(davids_scores) 
+   
+Result:
+
+.. code-block:: python
+  
+   {'a': 8.4444, 'b': 1.6111, 'c': -2.3333, 'd': -3.6667, 'e': -4.0556}
+   
+   
              
