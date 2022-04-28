@@ -1,13 +1,24 @@
 [![Build Status](https://app.travis-ci.com/nusretipek/HierarchiaPy.svg?branch=master)](https://app.travis-ci.com/nusretipek/HierarchiaPy)
 [![LICENCE](https://img.shields.io/github/license/nusretipek/HierarchiaPy)](https://github.com/nusretipek/HierarchiaPy/blob/master/LICENSE)
 [![codecov](https://codecov.io/gh/nusretipek/HierarchiaPy/branch/master/graph/badge.svg?token=vJeHuZ2Znv)](https://codecov.io/gh/nusretipek/HierarchiaPy)
+[![Documentation Status](https://readthedocs.org/projects/hierarchiapy/badge/?version=latest)](https://hierarchiapy.readthedocs.io/en/latest/?badge=latest)
 
 ------------------------------------------------
 <p align="center">
   <img src="docs/pictures/logo.png" width="500">
 </p>
 
-**HierarchiaPy** is an open-source Python package for social hierarchy and dominance analysis. It is mainly built on Pandas and NumPy. Interarction data can be parsed both from Pandas DataFrame and 2D Numpy array. Some of the implemented methods are listed below. For full list of functionality, see documentation.
+
+Introduction
+-----------
+
+**HierarchiaPy** is an optimized statistical package for hierarchy/dominance analysis methds. It is purely written in Python and mainly built on Pandas and NumPy. Interarction data can be parsed both from Pandas DataFrame and 2D Numpy array. The methods are implemented based on the original published papers and tests module designed to cross-check the results with the examples from the reference papers.
+
+Dominance and hierarchy is one of the core concepts in the research field of animal social behaviour. The hierarchy (dominance) can be derived from the interactions between the individuals (dyadic relationships). There are numerous techniques to derive the dominance from such dataset. We can classify them into two categories; numerical matrix optimization for certain criteria which results in a rank order (1) and calculation of a certain dominance measure for each individual from which a rank can be computed (2).
+
+The HierarchiaPy statistical python package aims to implement available methods from both categories, allowing the animal social scientists to derive dominance efficiently, easily and in a reproducible way.
+
+**Methods: Stable release**
 
 1. ELO rating
 2. Randomized ELO rating
@@ -18,12 +29,53 @@
 
 -----------------------------------------------
 
-**Methods that need refactoring**
-
-
-
-**Planned to be included**
+**Methods: Under Development**
 
 1. Linearity Test
 2. H index
 3. I&SI 13
+
+Quick Start
+-----------
+
+**Installation**
+
+PyPI publication is under process, for now use pip + git
+
+```python
+!pip install git+https://github.com/nusretipek/HierarchiaPy.git
+```
+
+**Basic Usage**
+
+```python
+from HierarchiaPy import Hierarchia
+import numpy as np
+
+mat_hemelrijk_table_2_1 = np.array([[0, 6, 9, 8, 5],
+                                    [0, 0, 4, 6, 0],
+                                    [0, 2, 0, 4, 7],
+                                    [1, 0, 5, 0, 3],
+                                    [0, 0, 2, 3, 0]], dtype='int64')
+
+hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
+davids_scores = hier_mat.davids_score()
+
+print(davids_scores)
+```
+
+Output:
+
+```python
+{'a': 8.4444, 'b': 1.6111, 'c': -2.3333, 'd': -3.6667, 'e': -4.0556}
+```
+
+Documentation
+-------------
+
+For full functionality and reference, see the [documentation](https://hierarchiapy.readthedocs.io/en/latest/)
+
+Change Log
+---------
+
+v 0.1.0 - Initial release
