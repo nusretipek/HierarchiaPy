@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import pytest
 
-# Simple Dataframe and Matrix
+# Define test matrix
 
 mat = np.array([[0, 1, 2, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0],
@@ -12,11 +12,11 @@ mat = np.array([[0, 1, 2, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 1, 0, 0]], dtype='int64')
 
-########################
+##########################
 ## ADAGIO PAPER DATASET ##
-########################
+##########################
 
-# ADAGIO Elo test
+# ADAGIO test
 
 def test_adagio_topological():
     hier_mat = Hierarchia(mat, np.array(['a', 'b', 'c', 'd', 'e', 'f']))
