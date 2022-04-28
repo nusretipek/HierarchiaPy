@@ -29,7 +29,7 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
     -------
     rank_dict : dict
         Rankings from the ADAGIO algorithm, ranked based on the ranking parameter chosen. 
-        Keys are ranks and the values are identification of individuals. (see name_seq)
+        Keys are identification of individuals (see name_seq) and the values are the ranks. 
 
     See also
     --------
