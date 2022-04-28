@@ -6,8 +6,49 @@ import pandas as pd
 # Define HierarchiaPy class
 class Hierarchia:
 
-    def __init__(self, *args, **kwargs):
+    """Public class for Hierarchy calculations.
 
+    It initializes a Hierarchia object with either Pandas DataFrame or 2D Numpy array. The class object can call the
+    methods after successful initialization.
+
+    .. note::
+
+        Initialization via Pandas Dataframe - Required to have two more arguments: Winner and Loser Column names
+        Initialization via 2D Numpy - Require to be symmetric (n x n)
+
+    """
+    
+    def __init__(self, *args, **kwargs):
+        
+        """A simple class to parse the input data before hierarchy/dominance analysis
+
+        Parameters
+        ----------
+        :param *args: `str
+            Variable length argument list can be used to initialize Hierarchia class. The first element has to be either
+            Pandas DataFrame or 2D Numpy. The second argument depends on the initialization object instance type.
+            For Pandas Dataframe; Winner and Loser in sequence needed. For 2D Numpy; name sequence can be provided
+            but not necessary.
+
+        :param **kwargs: str
+            Arbitrary keyword arguments. They can be combined with variable length arguments to initialize Hierarchia
+            class. The keyword arguments;
+            Pandas DataFrame initialization: 'df' for Dataframe, 'winner_col' columns for winner individuals and 
+                'loser_col' columns for loser individuals
+            2D Numpy: 'mat' for Numpy 2D Array (Matrix) and 'name_seq' for ordered individual names for rows/columns.
+
+        .. note::
+        
+            See detailed examples below
+
+        Returns
+        -------
+        Hierarchia : object
+            Hierarchia object that has necessary attributes to compute hierarch and dominance metrics with 
+            provided methods.
+
+        """
+        
         # initialize dataframe or matrix
         if len(args) > 0:
             if isinstance(args[0], pd.DataFrame):
