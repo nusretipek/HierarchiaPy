@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import pytest
 
-# Simple Dataframe and Matrix
+# Define test matrix
 
 mat_hemelrijk_table_2_1 = np.array([[0, 6, 9, 8, 5],
                                     [0, 0, 4, 6, 0],
