@@ -34,5 +34,5 @@ def test_kendall():
     assert kendall["d"] == 6.0
     assert kendall["unbiased_d"] == 4.0
     assert kendall["chi_sq"] == None
-    assert abs(landau["Improved_Landau_h"] - kendall[unbiased_K]) <= 0.01
+    assert abs(landau["Improved_Landau_h"] - kendall["unbiased_K"]) <= 0.01
    
