@@ -85,5 +85,5 @@ For full functionality and reference, see the [documentation](https://hierarchia
 Change Log
 ---------
 
-v 0.1.0 - Initial release
+v 0.1.0 - Initial release <br>
 v 0.2.0 - Inclusion of linearity statistics & tests
