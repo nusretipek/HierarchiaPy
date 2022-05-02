@@ -86,3 +86,4 @@ Change Log
 ---------
 
 v 0.1.0 - Initial release
+v 0.2.0 - Inclusion of linearity statistics & tests
