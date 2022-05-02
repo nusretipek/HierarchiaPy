@@ -32,7 +32,7 @@ def test_kendall():
     landau = hier_mat.landau_h(improved=True, n_random=10000)
     assert (isinstance(kendall, dict))
     assert kendall["d"] == 6.0
-    assert kendall["d"] == 4.0
+    assert kendall["unbiased_d"] == 4.0
     assert kendall["chi_sq"] == None
     assert abs(landau["Improved_Landau_h"] - kendall[unbiased_K]) <= 0.01
    
