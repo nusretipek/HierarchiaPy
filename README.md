@@ -24,16 +24,22 @@ The HierarchiaPy statistical python package aims to implement available methods 
 1. ELO rating
 2. Randomized ELO rating
 3. David's Scores
-2. Average Dominance Index
-3. Adagio
-4. I&SI 98
+4. Average Dominance Index
+5. Adagio
+6. I&SI 98
+
+**Linearity Tests: Stable release**
+
+1. Landau's h
+2. Improved Landau's h
+3. Kendall's K (Chi-square approximation & ECDF for n<10)
+4. Unbiased Kendall's K (permutation of unknown relationships)
+
 
 -----------------------------------------------
 
 **Methods: Under Development**
 
-1. Linearity Test
-2. H index
 3. I&SI 13
 
 Quick Start
