@@ -44,7 +44,7 @@ Quick Start
 PyPI publication is under process, for now use pip + git
 
 ```python
-!pip install git+https://github.com/nusretipek/HierarchiaPy.git
+!pip install HierarchiaPy
 ```
 
 **Basic Usage**
