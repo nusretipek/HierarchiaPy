@@ -134,4 +134,5 @@ class Hierarchia:
     from .methods._average_dominance_index import average_dominance_index
     from .methods._davids_score import davids_score
     from .methods._ISI98 import ISI98
-    
+    from .linearity._landau_h import landau_h
+    from .linearity._kendall_k import kendall_k    
