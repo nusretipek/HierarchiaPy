@@ -18,8 +18,8 @@ test_appleby_1 = np.array([[0, 6, 1, 4, 6, 8, 5],
 
 def test_landau():
     hier_mat = HierarchiaPy(test_appleby_1)
-    landau_1 = hier.landau_h(improved=False, n_random=10000))
-    landau_2 = hier.landau_h(improved=True, n_random=10000))
+    landau_1 = hier.landau_h(improved=False, n_random=10000)
+    landau_2 = hier.landau_h(improved=True, n_random=10000)
     assert landau_1 == None
     assert (isinstance(landau_2, dict))
     assert 0.70 < landau_2["Improved_Landau_h"] < 0.75
@@ -29,7 +29,7 @@ def test_landau():
 def test_kendall():
     hier_mat = HierarchiaPy(test_appleby_1)
     kendall = hier.kendall_k(odd_K=False)
-    landau = hier.landau_h(improved=True, n_random=10000))
+    landau = hier.landau_h(improved=True, n_random=10000)
     assert (isinstance(kendall, dict))
     assert kendall["d"] == 6.0
     assert kendall["d"] == 4.0
