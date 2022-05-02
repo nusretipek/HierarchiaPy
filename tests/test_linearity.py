@@ -17,7 +17,7 @@ test_appleby_1 = np.array([[0, 6, 1, 4, 6, 8, 5],
 # Linearity Tests
 
 def test_landau():
-    hier_mat = HierarchiaPy(test_appleby_1)
+    hier_mat = Hierarchia(test_appleby_1)
     landau_1 = hier.landau_h(improved=False, n_random=10000)
     landau_2 = hier.landau_h(improved=True, n_random=10000)
     assert landau_1 == None
@@ -27,7 +27,7 @@ def test_landau():
 
     
 def test_kendall():
-    hier_mat = HierarchiaPy(test_appleby_1)
+    hier_mat = Hierarchia(test_appleby_1)
     kendall = hier.kendall_k(odd_K=False)
     landau = hier.landau_h(improved=True, n_random=10000)
     assert (isinstance(kendall, dict))
