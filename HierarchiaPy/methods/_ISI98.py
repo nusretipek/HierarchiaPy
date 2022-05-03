@@ -15,13 +15,13 @@ def ISI98(self, runs=1000, verbose=False):
 
     :param verbose: boolean
         Print initial, intermediate and final inconsistencies, strength of inconsistencies and matrices. Used for
-        detailed output of computational process. (False)
+        detailed output of computational process.
 
     Returns
     -------
-    rank_dict : dict
-        Rankings from the I&SI 1998 algorithm. Keys are identification of individuals (see name_seq) and 
-        the values are the ranks. 
+    best_seq : list
+        Rankings from the I&SI 1998 algorithm, optimality cannot be guaranteed due to random search but given high
+        number of runs, it should be stable. Outputs the ordered rankings.
 
     See also
     --------
@@ -52,6 +52,12 @@ def ISI98(self, runs=1000, verbose=False):
             if mat[idx, idy] == mat[idy, idx]:
                 mat[idx, idy] = 0
                 mat[idy, idx] = 0
+            elif mat[idx, idy] > mat[idy, idx]:
+                mat[idx, idy] = 1
+                mat[idy, idx] = 0
+            else:
+                mat[idx, idy] = 0
+                mat[idy, idx] = 1
 
     def swap_column_2d(arr, index_x, index_y):
         arr[:, [index_x, index_y]] = temp_mat[:, [index_y, index_x]]
@@ -73,7 +79,7 @@ def ISI98(self, runs=1000, verbose=False):
     if verbose:
         print('Initial Phase\n-------------')
         print('Initial number of inconsistencies: ', len(inconsistencies[0]))
-        print('Initial number of inconsistencies: ', str_i, '\n')
+        print('Initial strength of inconsistencies: ', str_i, '\n')
 
     # define parameters
     min_inconsistencies = len(inconsistencies[0])
@@ -88,8 +94,10 @@ def ISI98(self, runs=1000, verbose=False):
     for _ in range(runs):
 
         flag = True
+        flag_i = 0
         while flag:
             flag = False
+            flag_i += 1
             inconsistencies = np.where(np.triu(temp_mat - np.transpose(temp_mat)) < 0)
             for idx in range(len(inconsistencies[0])):
                 net_incs = 0
@@ -100,6 +108,8 @@ def ISI98(self, runs=1000, verbose=False):
                     temp_mat = swap_row_2d(temp_mat, inconsistencies[0][idx], inconsistencies[1][idx])
                     temp_seq = swap_element_1d(temp_seq, inconsistencies[0][idx], inconsistencies[1][idx])
                     flag = True
+            if flag_i > 10000:
+                flag = False
 
         # compute number of inconsistencies and strength of inconsistencies
         inconsistencies = np.where(np.triu(temp_mat - np.transpose(temp_mat)) < 0)
@@ -156,7 +166,7 @@ def ISI98(self, runs=1000, verbose=False):
     if verbose:
         print('Final Phase\n-------------')
         print('Final number of inconsistencies: ', len(inconsistencies[0]))
-        print('Final number of inconsistencies: ', str_i)
+        print('Final strength of inconsistencies: ', str_i)
         print('Best Sequence: ', best_seq)
         print('Matrix after final phase: \n')
         print(best_mat)
