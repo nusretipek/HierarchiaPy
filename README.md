@@ -89,3 +89,4 @@ v 0.1.0 - Initial release <br>
 v 0.2.0 - Inclusion of linearity statistics & tests <br>
 v 0.2.1 - Hot-fix for linearity tests <br>
 v 0.2.2 - I&SI 98, performance improvement
+v 0.2.3 - Landau's h classic improvement
