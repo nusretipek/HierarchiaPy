@@ -6,7 +6,7 @@
 
 ------------------------------------------------
 <p align="center">
-  <img src="https://github.com/nusretipek/HierarchiaPy/blob/master/docs/pictures/logo.png" width="500">
+  <img src="https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/logo.png" width="500">
 </p>
 
 
@@ -40,7 +40,7 @@ The HierarchiaPy statistical python package aims to implement available methods 
 
 **Methods: Under Development**
 
-3. I&SI 13
+3. I&SI 13 
 
 Quick Start
 -----------
@@ -86,4 +86,6 @@ Change Log
 ---------
 
 v 0.1.0 - Initial release <br>
-v 0.2.0 - Inclusion of linearity statistics & tests
+v 0.2.0 - Inclusion of linearity statistics & tests <br>
+v 0.2.1 - Hot-fix for linearity tests <br>
+v 0.2.2 - I&SI 98, performance improvement
