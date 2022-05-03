@@ -23,7 +23,7 @@ old_landau_h = np.array([[0, 3, 10],
 def test_landau():
     hier_mat = Hierarchia(old_landau_h)
     landau_1 = hier_mat.landau_h(improved=False)
-    assert landau_1["Landau_h"] == 0.5
+    assert landau_1["Landau_h"] == 0.75
     hier_mat = Hierarchia(test_appleby_1)
     landau_2 = hier_mat.landau_h(improved=True, n_random=10000)
     assert (isinstance(landau_2, dict))
