@@ -13,14 +13,19 @@ test_appleby_1 = np.array([[0, 6, 1, 4, 6, 8, 5],
                            [1, 15, 1, 0, 11, 0, 1],
                            [4, 2, 0, 0, 0, 0, 0]], dtype='float32')
 
+old_landau_h = np.array([[0, 3, 10],
+                         [2, 0, 1],
+                         [0, 1, 0]], dtype='float32')
+
 
 # Linearity Tests
 
 def test_landau():
+    hier_mat = Hierarchia(old_landau_h)
+    landau_1 = hier_mat.landau_h(improved=False)
+    assert landau_1["Landau_h"] == 0.5
     hier_mat = Hierarchia(test_appleby_1)
-    landau_1 = hier_mat.landau_h(improved=False, n_random=10000)
     landau_2 = hier_mat.landau_h(improved=True, n_random=10000)
-    assert landau_1 == None
     assert (isinstance(landau_2, dict))
     assert 0.70 < landau_2["Improved_Landau_h"] < 0.75
     assert landau_2["p_value_r"] < 0.10
