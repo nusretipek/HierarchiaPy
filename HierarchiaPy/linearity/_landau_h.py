@@ -30,10 +30,10 @@ def landau_h(self, improved=True, n_random=10000):
                         temp_mat[idx, idy] = 0
                         temp_mat[idy, idx] = 1
 
-                    row_sums = np.sum(temp_mat, axis=1)
-                    landaus_h = (12 / ((temp_mat.shape[0] ** 3) - temp_mat.shape[0])) * np.sum(
-                        ((row_sums - ((len(row_sums) - 1) / 2)) ** 2), axis=0)
-                    return {'Landau_h': round(landaus_h, 4)}
+            row_sums = np.sum(temp_mat, axis=1)
+            landaus_h = (12 / ((temp_mat.shape[0] ** 3) - temp_mat.shape[0])) * np.sum(
+                ((row_sums - ((len(row_sums) - 1) / 2)) ** 2), axis=0)
+            return {'Landau_h': round(landaus_h, 4)}
 
     if improved:
         landau_h_master = []
