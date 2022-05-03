@@ -47,6 +47,12 @@ def ISI98(self, runs=1000, verbose=False):
 
     mat = self.mat.astype('int64')
 
+    for idx in range(mat.shape[0]):
+        for idy in range(idx + 1, mat.shape[0]):
+            if mat[idx, idy] == mat[idy, idx]:
+                mat[idx, idy] = 0
+                mat[idy, idx] = 0
+
     def swap_column_2d(arr, index_x, index_y):
         arr[:, [index_x, index_y]] = temp_mat[:, [index_y, index_x]]
         return arr
@@ -80,7 +86,7 @@ def ISI98(self, runs=1000, verbose=False):
 
     # iterative process
     for _ in range(runs):
-        
+
         flag = True
         while flag:
             flag = False
@@ -143,6 +149,9 @@ def ISI98(self, runs=1000, verbose=False):
                 temp_str_i = sum([temp_i[1][idz] - temp_i[0][idz] for idz in range(len(temp_i[0]))])
                 if not temp_str_i > min_str_i:
                     best_seq, best_mat = temp_seq.copy(), temp_mat.copy()
+
+    inconsistencies = np.where(np.triu(best_mat - np.transpose(best_mat)) < 0)
+    str_i = sum([inconsistencies[1][idx] - inconsistencies[0][idx] for idx in range(len(inconsistencies[0]))])
 
     if verbose:
         print('Final Phase\n-------------')
