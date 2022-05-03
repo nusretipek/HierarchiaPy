@@ -80,14 +80,20 @@ def ISI98(self, runs=1000, verbose=False):
 
     # iterative process
     for _ in range(runs):
-        for idx in range(len(inconsistencies[0])):
-            net_incs = 0
-            for idy in range(inconsistencies[0][idx], inconsistencies[1][idx]):
-                net_incs += (temp_mat[inconsistencies[1][idx], idy] - temp_mat[idy, inconsistencies[1][idx]])
-            if net_incs > 0:
-                temp_mat = swap_column_2d(temp_mat, inconsistencies[0][idx], inconsistencies[1][idx])
-                temp_mat = swap_row_2d(temp_mat, inconsistencies[0][idx], inconsistencies[1][idx])
-                temp_seq = swap_element_1d(temp_seq, inconsistencies[0][idx], inconsistencies[1][idx])
+        
+        flag = True
+        while flag:
+            flag = False
+            inconsistencies = np.where(np.triu(temp_mat - np.transpose(temp_mat)) < 0)
+            for idx in range(len(inconsistencies[0])):
+                net_incs = 0
+                for idy in range(inconsistencies[0][idx], inconsistencies[1][idx]):
+                    net_incs += (temp_mat[inconsistencies[1][idx], idy] - temp_mat[idy, inconsistencies[1][idx]])
+                if net_incs > 0:
+                    temp_mat = swap_column_2d(temp_mat, inconsistencies[0][idx], inconsistencies[1][idx])
+                    temp_mat = swap_row_2d(temp_mat, inconsistencies[0][idx], inconsistencies[1][idx])
+                    temp_seq = swap_element_1d(temp_seq, inconsistencies[0][idx], inconsistencies[1][idx])
+                    flag = True
 
         # compute number of inconsistencies and strength of inconsistencies
         inconsistencies = np.where(np.triu(temp_mat - np.transpose(temp_mat)) < 0)
