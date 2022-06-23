@@ -1,13 +1,26 @@
 import numpy as np
 
 
-def davids_score(self):
+def get_Dij(mat):
+    total_mat = mat + np.transpose(mat)
+    mat = np.divide(mat, total_mat, out=np.zeros_like(mat), where=total_mat != 0)
+    mat -= np.divide((mat-0.5), total_mat+1, out=np.zeros_like(mat), where=total_mat != 0)
+    return mat
 
-    """David's scores from an interaction dataframe/matrix..
+
+def davids_score(self, method='Pij', normalize=False):
+
+    """David's scores from an interaction dataframe/matrix.
 
     Parameters
     ----------
     :param self: reference to the current instance of the class
+    :param method: str
+        Valid arguments are 'Dij' and 'Pij'. The method stands for the initial matrix state, the 'Dij' method
+        use the corrected version for chance for dyadic dominance index (ref. de Vries (2006)). The 'Pij' method use
+        the proportion of wins to compute David's Scores
+    :param normalize: Boolean
+        Normalization of the David's scores using formula of NormDS = (DS+N(N −1)/2)/N (ref. de Vries (2006)) (False)
 
     Returns
     -------
@@ -33,13 +46,21 @@ def davids_score(self):
     * David, H. A. 1987. Ranking from unbalanced paired-comparison data. Biometrika, 74, 432–436.
     * Gammell MP, de Vries H, Jennings DJ, Carlin CM, Hayden TJ (2003). “David's score: a more appropriate dominance
       ranking method than Clutton-Brock et al.'s index.” Animal Behaviour, 66, 601-605. doi: 10.1006/anbe.2003.2226.
-    * de Vries H, Stevens JMG, Vervaecke H (2006). “Measuring and testing the steepness of dominance hierarchies.” 
+    * de Vries H, Stevens JMG, Vervaecke H (2006). “Measuring and testing the steepness of dominance hierarchies.”
       Animal Behaviour, 71, 585-592. doi: 10.1016/j.anbehav.2005.05.015.
-    
+
     """
-    
+
+    # Assertions
+    assert method in ['Dij', 'Pij']
+    assert type(normalize) == bool
+
     # Matrix manipulation
+
     mat = self.mat.astype('float64')
+    if method == 'Dij':
+        mat = get_Dij(mat)
+
     np.fill_diagonal(mat, np.nan)
     sum_mat = mat.copy()
 
@@ -52,7 +73,7 @@ def davids_score(self):
             else:
                 sum_mat[idx, idy] = np.nan
                 sum_mat[idy, idx] = np.nan
-    
+
     # Calculation of matrix properties
     prop_mat = mat / sum_mat
     var_l = np.nansum(prop_mat, axis=0)
@@ -60,7 +81,15 @@ def davids_score(self):
     var_l2 = np.nansum(np.transpose(prop_mat) * var_l, axis=1)
     var_w2 = np.nansum(prop_mat * var_w, axis=1)
     var_ds = var_w + var_w2 - var_l - var_l2
-    
+
     # Create David's score dictionary
     davids_score_dict = {i: round(var_ds[idx], 4) for idx, i in enumerate(self.indices)}
-    return davids_score_dict
+
+    if not normalize:
+        return davids_score_dict
+    else:
+        normalised_davids_score_dict = {
+            key: round((davids_score_dict[key] + (len(davids_score_dict) * (len(davids_score_dict) - 1) / 2)) / len(
+                davids_score_dict), 4) for key in davids_score_dict}
+        return normalised_davids_score_dict
+    
