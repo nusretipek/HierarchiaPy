@@ -24,9 +24,14 @@ The HierarchiaPy statistical python package aims to implement available methods 
 1. ELO rating
 2. Randomized ELO rating
 3. David's Scores
-4. Average Dominance Index
-5. Adagio
-6. I&SI 98
+4. Normalized David's Scores
+5. Average Dominance Index
+6. Adagio
+7. I&SI 98
+8. Directional Consistency Index (DCI)
+9. Steepness
+10. Steepness Test 
+11. Planor Network Visualization
 
 **Linearity Tests: Stable release**
 
@@ -46,8 +51,6 @@ Quick Start
 -----------
 
 **Installation**
-
-PyPI publication is under process, for now use pip + git
 
 ```python
 !pip install HierarchiaPy
@@ -90,3 +93,4 @@ v 0.2.0 - Inclusion of linearity statistics & tests <br>
 v 0.2.1 - Hot-fix for linearity tests <br>
 v 0.2.2 - I&SI 98, performance improvement
 v 0.2.3 - Landau's h classic improvement
+v 0.2.4 - Steepness, DCI and network vizualization added
