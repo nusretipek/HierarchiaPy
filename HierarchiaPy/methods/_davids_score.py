@@ -1,11 +1,5 @@
 import numpy as np
-
-
-def get_Dij(mat):
-    total_mat = mat + np.transpose(mat)
-    mat = np.divide(mat, total_mat, out=np.zeros_like(mat), where=total_mat != 0)
-    mat -= np.divide((mat-0.5), total_mat+1, out=np.zeros_like(mat), where=total_mat != 0)
-    return mat
+from ._steepness import _static_get_Dij
 
 
 def davids_score(self, method='Pij', normalize=False):
@@ -59,7 +53,7 @@ def davids_score(self, method='Pij', normalize=False):
 
     mat = self.mat.astype('float64')
     if method == 'Dij':
-        mat = get_Dij(mat)
+        mat = _static_get_Dij(mat)
 
     np.fill_diagonal(mat, np.nan)
     sum_mat = mat.copy()
@@ -92,4 +86,3 @@ def davids_score(self, method='Pij', normalize=False):
             key: round((davids_score_dict[key] + (len(davids_score_dict) * (len(davids_score_dict) - 1) / 2)) / len(
                 davids_score_dict), 4) for key in davids_score_dict}
         return normalised_davids_score_dict
-    
