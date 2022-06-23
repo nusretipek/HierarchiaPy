@@ -11,7 +11,7 @@ except ImportError:
 # Setup parameters
 
 DISTNAME = "HierarchiaPy"
-VERSION = "0.2.3"
+VERSION = "0.2.4"
 AUTHOR = "Nusret Ipek"
 AUTHOR_EMAIL ="Nusret.Ipek@UGent.be"
 
