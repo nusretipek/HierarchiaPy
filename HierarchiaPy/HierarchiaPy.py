@@ -127,12 +127,17 @@ class Hierarchia:
             self.indices = list(self.cross_tab_df.columns)
 
     # import methods
-
-    from .methods._elo import elo
-    from .methods._randomized_elo import randomized_elo
-    from .methods._adagio import adagio
-    from .methods._average_dominance_index import average_dominance_index
-    from .methods._davids_score import davids_score
-    from .methods._ISI98 import ISI98
-    from .linearity._landau_h import landau_h
-    from .linearity._kendall_k import kendall_k    
+    
+    from methods._elo import elo
+    from methods._randomized_elo import randomized_elo
+    from methods._adagio import adagio
+    from methods._average_dominance_index import average_dominance_index
+    from methods._davids_score import davids_score
+    from methods._steepness import get_Dij
+    from methods._steepness import get_steepness
+    from methods._steepness import steepness_test
+    from methods._ISI98 import ISI98
+    from methods._network_graph import directed_network_graph
+    from linearity._dci import dci
+    from linearity._landau_h import landau_h
+    from linearity._kendall_k import kendall_k
