@@ -36,7 +36,6 @@ def directed_network_graph(self, **kwargs):
         nx.draw_networkx_edge_labels(network_graph, pos, edge_labels=weights_final)
         plt.tight_layout()
         figure.canvas.draw()
-        plt.show()
         return figure
 
     except:
