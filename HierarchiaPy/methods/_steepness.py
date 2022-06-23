@@ -94,6 +94,7 @@ def _randomize_mat(mat):
             temp_mat[idy, idx] = random_j
     return temp_mat
 
+
 def steepness_test(self, method='Dij', n=2000):
     # Assertions
     assert type(n) == int and (0 < n <= 1000000)
