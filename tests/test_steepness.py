@@ -19,9 +19,34 @@ mat_hemelrijk_table_2_1 = np.array([[0, 6, 9, 8, 5],
 
 # Test David's Score
 
-def test_davids_scores():
+def test_dij_steep():
     hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
-    davids_scores = hier_mat.davids_score()
-    assert (isinstance(davids_scores, dict))
-    assert (len(davids_scores) == len(hier_mat.indices))
-    assert(davids_scores == {'a': 8.4444, 'b': 1.6111, 'c': -2.3333, 'd': -3.6667, 'e': -4.0556})
+    stp = hier_mat.get_steepness(method='Dij')
+    assert (isinstance(stp, np.float64))
+    assert(stp == 0.5262)
+
+def test_pij_steep():
+    hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
+    stp = hier_mat.get_steepness(method='Pij')
+    assert (isinstance(stp, np.float64))
+    assert(stp == 0.6056)
+    
+def test_dij_steeptest():
+    hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
+    stp = hier_mat.steepness_test(method='Dij', n=100)
+    assert (isinstance(stp, dict))
+    assert(stp['steepness'] == 0.5262)
+    
+def test_pij_steeptest():
+    hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
+    stp = hier_mat.steepness_test(method='Pij', n=100)
+    assert (isinstance(stp, dict))
+    assert(stp['count'] == 100)
+    assert(stp['steepness'] == 0.6056)
+    
+def test_get_dij():
+    hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
+    dij = hier_mat.get_Dij()
+    assert (dij.shape == (5,5))
+    assert (dij[0,0] == 0.0)
+    assert (dij[1,2] == 0.6429)
