@@ -39,6 +39,6 @@ def directed_network_graph(self, **kwargs):
         plt.show()
         return figure
 
-    finally:
+    except:
         warnings.warn('Layout is not suitable for planar!')
         return None
