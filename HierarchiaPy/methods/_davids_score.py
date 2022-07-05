@@ -1,9 +1,7 @@
 import numpy as np
-from ._steepness import _static_get_Dij
 
 
-def davids_score(self, method='Pij', normalize=False):
-
+def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool = True) -> dict:
     """David's scores from an interaction dataframe/matrix.
 
     Parameters
@@ -13,8 +11,10 @@ def davids_score(self, method='Pij', normalize=False):
         Valid arguments are 'Dij' and 'Pij'. The method stands for the initial matrix state, the 'Dij' method
         use the corrected version for chance for dyadic dominance index (ref. de Vries (2006)). The 'Pij' method use
         the proportion of wins to compute David's Scores
-    :param normalize: Boolean
+    :param normalize: bool
         Normalization of the David's scores using formula of NormDS = (DS+N(N −1)/2)/N (ref. de Vries (2006)) (False)
+    :param order: bool
+        If True, the resulting dictionary is sorted in descending order by David's scores (True)
 
     Returns
     -------
@@ -42,18 +42,18 @@ def davids_score(self, method='Pij', normalize=False):
       ranking method than Clutton-Brock et al.'s index.” Animal Behaviour, 66, 601-605. doi: 10.1006/anbe.2003.2226.
     * de Vries H, Stevens JMG, Vervaecke H (2006). “Measuring and testing the steepness of dominance hierarchies.”
       Animal Behaviour, 71, 585-592. doi: 10.1016/j.anbehav.2005.05.015.
-
     """
 
     # Assertions
     assert method in ['Dij', 'Pij']
     assert type(normalize) == bool
+    assert type(order) == bool
 
     # Matrix manipulation
 
-    mat = self.mat.astype('float64')
+    mat = self.mat.astype('float32')
     if method == 'Dij':
-        mat = _static_get_Dij(mat)
+        mat = self.get_Dij()
 
     np.fill_diagonal(mat, np.nan)
     sum_mat = mat.copy()
@@ -79,10 +79,13 @@ def davids_score(self, method='Pij', normalize=False):
     # Create David's score dictionary
     davids_score_dict = {i: round(var_ds[idx], 4) for idx, i in enumerate(self.indices)}
 
-    if not normalize:
-        return davids_score_dict
-    else:
-        normalised_davids_score_dict = {
+    if normalize:
+        davids_score_dict = {
             key: round((davids_score_dict[key] + (len(davids_score_dict) * (len(davids_score_dict) - 1) / 2)) / len(
-                davids_score_dict), 4) for key in davids_score_dict}
-        return normalised_davids_score_dict
+                davids_score_dict), 4) for key in davids_score_dict
+        }
+    if order:
+        davids_score_dict = {k: v for k, v in sorted(davids_score_dict.items(), key=lambda x: x[1], reverse=True)}
+
+    # Return David's score dictionary
+    return davids_score_dict
