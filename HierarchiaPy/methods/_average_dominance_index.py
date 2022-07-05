@@ -1,13 +1,12 @@
 import numpy as np
 
 
-def average_dominance_index(self):
-
+def average_dominance_index(self) -> dict:
+    
     """Average Dominance Index (ADI) from an interaction dataframe/matrix.
 
     Parameters
     ----------
-    :param self: reference to the current instance of the class
 
     Returns
     -------
@@ -32,12 +31,12 @@ def average_dominance_index(self):
       doi: 10.1163/156853905774405290
 
     """
-    
+
     # Matrix manipulation
     mat = self.mat.astype('float64')
     np.fill_diagonal(mat, np.nan)
     sum_mat = mat.copy()
-    
+
     for idx in range(0, mat.shape[0]):
         for idy in range(idx + 1, mat.shape[0]):
             temp_sum = mat[idx, idy] + mat[idy, idx]
@@ -47,12 +46,12 @@ def average_dominance_index(self):
             else:
                 sum_mat[idx, idy] = np.nan
                 sum_mat[idy, idx] = np.nan
-   
+
     # Calculation of matrix properties
     prop_mat = mat / sum_mat
     var_w = np.nansum(prop_mat, axis=1)
     var_adi = var_w / np.count_nonzero(~np.isnan(prop_mat), axis=1)
-   
+
     # Create ADI dictionary
     average_dominance_index_dict = {i: round(var_adi[idx], 4) for idx, i in enumerate(self.indices)}
     return average_dominance_index_dict
