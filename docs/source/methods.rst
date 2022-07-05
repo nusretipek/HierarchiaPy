@@ -319,7 +319,7 @@ Example:
 
 Result:
 
-.. image:: https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/example_network_graph.png
+.. image:: https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/example_network_graph_2.png
   :width: 500
   :alt: Directed networkk graph (Planar layout)
 
