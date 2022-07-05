@@ -37,7 +37,7 @@ def get_Dij(self) -> np.ndarray:
     """
 
     # Calculate Dij
-    mat = self.mat.astype('float32')
+    mat = self.mat.astype('float64')
     total_mat = mat + np.transpose(mat)
     mat = np.divide(mat, total_mat, out=np.zeros_like(mat), where=total_mat != 0)
     mat -= np.divide((mat - 0.5), total_mat + 1, out=np.zeros_like(mat), where=total_mat != 0)
