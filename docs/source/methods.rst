@@ -319,7 +319,8 @@ Example:
 
 Result:
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/example_network_graph.png" width="500">
-</p>
+.. image:: https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/example_network_graph.png
+  :width: 500
+  :alt: Directed networkk graph (Planar layout)
+
                         
