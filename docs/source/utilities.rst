@@ -5,7 +5,7 @@ Utilities
 Dij Matrix
 -------------------------------
 
-.. autofunction:: _metrics.get_Dij
+.. autofunction:: _steepness.get_Dij
 
 Example:
 
@@ -44,7 +44,7 @@ Result:
 Directed Network Plot (Planar Layout)
 -------------------------------
 
-.. autofunction:: _utilities.directed_network_graph
+.. autofunction:: _network_graph.directed_network_graph
 
 Example:
 
