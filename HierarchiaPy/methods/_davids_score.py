@@ -6,7 +6,6 @@ def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool
 
     Parameters
     ----------
-    :param self: reference to the current instance of the class
     :param method: str
         Valid arguments are 'Dij' and 'Pij'. The method stands for the initial matrix state, the 'Dij' method
         use the corrected version for chance for dyadic dominance index (ref. de Vries (2006)). The 'Pij' method use
