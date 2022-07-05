@@ -7,12 +7,12 @@ def ISI98(self, runs: int = 1000, verbose: bool = False) -> dict:
     
     Parameters
     ----------
-    :param runs: integer
+    :param runs: int
         Parameter to adjust number of iterations for random ordering. Higher numbers result increase chance of
         finding the best sequence. Original paper suggests as low as 100 runs but our package use default 1000. (1000)
-    :param verbose: boolean
+    :param verbose: bool
         Print initial, intermediate and final inconsistencies, strength of inconsistencies and matrices. Used for
-        detailed output of computational process.
+        detailed output of computational process. (False)
     
     Returns
     -------
