@@ -8,6 +8,7 @@ def get_Dij(self) -> np.ndarray:
 
     Parameters
     ----------
+    None
 
     Returns
     -------
