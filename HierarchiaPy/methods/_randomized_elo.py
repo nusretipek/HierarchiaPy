@@ -8,9 +8,7 @@ def randomized_elo(self, start_value=1000, K=100, n=1000, normal_probability=Fal
     """Randomized Elo rating from an interaction dataframe/matrix.
 
     Parameters
-    ----------
-    :param self: reference to the current instance of the class
-    
+    ----------    
     :param start_value: float
         Parameter of the Elo function that determines the initial scores. It does not have
         an effect on relative differences after the calculation. (1000)
