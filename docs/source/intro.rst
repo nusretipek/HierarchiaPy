@@ -8,20 +8,33 @@ The **HierarchiaPy** statistical python package aims to implement available meth
 .. note::
  Categories of the methods are given next to the method's name in the parenthesis
 
-**Available Methods**
+**Methods**
 
 1. Elo Rating (2)
 2. Randomized ELO rating (2)
 3. David's Scores (2)
-4. Average Dominance Index (2)
-5. Adagio (1)
-6. I&SI 98 (1)
+4. Normalized David's Scores (2)
+5. Average Dominance Index (2)
+6. Adagio (1)
+7. I&SI 98 (1)
 
-**Methods: Under Active Development**
+**Dominance Metrics**
 
-1. Linearity Test
-2. H index
-3. I&SI 13
+1. Directional Consistency Index (DCI)
+2. Steepness Measure
+3. Steepness Test 
+4. Landau's h
+5. Improved Landau's h (h')
+6. Kendall K (Chi square > 10 and ECDF <= 10)
+
+**Utilities**
+
+1. Dij Matrix  
+2. Planar Network Visualization
+
+**Under Active Development**
+
+1. I&SI 13
 
 ..
  Local Variables:
