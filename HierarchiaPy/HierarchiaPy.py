@@ -133,11 +133,11 @@ class Hierarchia:
     from .methods._adagio import adagio
     from .methods._average_dominance_index import average_dominance_index
     from .methods._davids_score import davids_score
-    from .methods._steepness import get_Dij
-    from .methods._steepness import get_steepness
-    from .methods._steepness import steepness_test
+    from .metrics._steepness import get_Dij
+    from .metrics._steepness import get_steepness
+    from .metrics._steepness import steepness_test
     from .methods._ISI98 import ISI98
-    from .methods._network_graph import directed_network_graph
-    from .linearity._dci import dci
-    from .linearity._landau_h import landau_h
-    from .linearity._kendall_k import kendall_k
+    from .utilities._network_graph import directed_network_graph
+    from .metrics._dci import dci
+    from .metrics._landau_h import landau_h
+    from .metrics._kendall_k import kendall_k
