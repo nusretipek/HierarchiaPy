@@ -2,6 +2,7 @@ import numpy as np
 
 
 def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool = True) -> dict:
+    
     """David's scores from an interaction dataframe/matrix.
 
     Parameters
