@@ -16,3 +16,6 @@ Contents
    intro
    getting-started
    methods
+   metrics
+   utilities
+   
