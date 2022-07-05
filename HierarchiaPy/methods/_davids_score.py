@@ -50,7 +50,7 @@ def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool
     assert type(order) == bool
 
     # Matrix manipulation
-    mat = self.mat.astype('float32')
+    mat = self.mat.astype('float64')
     if method == 'Dij':
         mat = self.get_Dij()
 
