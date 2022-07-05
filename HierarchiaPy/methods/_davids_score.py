@@ -50,7 +50,6 @@ def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool
     assert type(order) == bool
 
     # Matrix manipulation
-
     mat = self.mat.astype('float32')
     if method == 'Dij':
         mat = self.get_Dij()
@@ -78,12 +77,10 @@ def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool
 
     # Create David's score dictionary
     davids_score_dict = {i: round(var_ds[idx], 4) for idx, i in enumerate(self.indices)}
-
     if normalize:
         davids_score_dict = {
             key: round((davids_score_dict[key] + (len(davids_score_dict) * (len(davids_score_dict) - 1) / 2)) / len(
-                davids_score_dict), 4) for key in davids_score_dict
-        }
+                davids_score_dict), 4) for key in davids_score_dict}
     if order:
         davids_score_dict = {k: v for k, v in sorted(davids_score_dict.items(), key=lambda x: x[1], reverse=True)}
 
