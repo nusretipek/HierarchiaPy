@@ -20,7 +20,7 @@ mat_hemelrijk_table_2_1 = np.array([[0, 6, 9, 8, 5],
 
 def test_davids_scores():
     hier_mat = Hierarchia(mat_hemelrijk_table_2_1, np.array(['a', 'b', 'c', 'd', 'e']))
-    davids_scores = hier_mat.davids_score()
+    davids_scores = hier_mat.davids_score(order=False)
     assert (isinstance(davids_scores, dict))
     assert (len(davids_scores) == len(hier_mat.indices))
     assert(davids_scores == {'a': 8.4444, 'b': 1.6111, 'c': -2.3333, 'd': -3.6667, 'e': -4.0556})
