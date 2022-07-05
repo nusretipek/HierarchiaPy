@@ -3,23 +3,19 @@ import networkx as nx
 import numpy as np
 
 
-def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
+def adagio(self, preprocessing: bool = False, plot_network: bool = False, rank: str = 'topological') -> dict:
 
     """ADAGIO from an interaction dataframe/matrix.
 
     Parameters
     ----------
-    :param self: reference to the current instance of the class
-
-    :param preprocessing: boolean
+    :param preprocessing: bool
         preprocessing of the initial matrix according to the original paper [Douglas, 2016].  For a given dominance
         network, the preprocessed weight of the edge between the individual A that appears dominant and the individual B
         that appears subordinate is set to the difference in the number of interactions won by A and the number
         of interactions won by B. (False)
-
-    :param plot_network: boolean
+    :param plot_network: bool
         Simple network plot of the derived directed graph network from the dataframe/matrix. (False)
-
     :param rank: str
         Final ranking algorithm after the ADAGIO iterations. Three options are possible; 'topological' that yields
         topological order of the final matrix. 'top' and 'bottom' are self-explanatory and can be found at original
@@ -28,8 +24,8 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
     Returns
     -------
     rank_dict : dict
-        Rankings from the ADAGIO algorithm, ranked based on the ranking parameter chosen. 
-        Keys are identification of individuals (see name_seq) and the values are the ranks. 
+        Rankings from the ADAGIO algorithm, ranked based on the ranking parameter chosen.
+        Keys are identification of individuals (see name_seq) and the values are the ranks.
 
     See also
     --------
@@ -47,22 +43,27 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
     References
     ----------
     * Douglas, P. H., Ngomo, A. C. N., & Hohmann, G. (2017). A novel approach for dominance assessment in gregarious
-      species: ADAGIO. Animal Behaviour, 123, 21-32.    
-
+      species: ADAGIO. Animal Behaviour, 123, 21-32.
+      
     """
-
+    
+    # Matrix manipulations
     mat = self.mat.astype('int64')
-
+    
+    # Preprocessing
     if preprocessing:
         mat = mat - np.transpose(mat)
         mat = np.where(mat < 0, 0, mat)
-
+    
+    # Network 
     network_graph = nx.from_numpy_matrix(mat, create_using=nx.DiGraph(directed=True))
-
+    
+    # Plot network
     if plot_network:
         nx.draw_networkx(network_graph, arrows=True)
         plt.show()
-
+    
+    # Calculation of ranks
     largest = max(nx.strongly_connected_components(network_graph), key=len)
     while len(largest) > 1:
         sliced_mat = mat[list(largest), :][:, list(largest)]
@@ -73,7 +74,8 @@ def adagio(self, preprocessing=False, plot_network=False, rank='topological'):
             mat[list(largest)[min_edges[0][idx]], list(largest)[min_edges[1][idx]]] = 0
 
         largest = max(nx.strongly_connected_components(network_graph), key=len)
-
+    
+    # Return results based on ranking method
     if rank == 'topological':
         return {self.indices[element]: idx for idx, element in enumerate(list(nx.topological_sort(network_graph)))}
     elif rank == 'top':
