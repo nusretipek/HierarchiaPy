@@ -52,7 +52,9 @@ def davids_score(self, method: str = 'Pij', normalize: bool = False, order: bool
     # Matrix manipulation
     mat = self.mat.astype('float64')
     if method == 'Dij':
-        mat = self.get_Dij()
+        total_mat = mat + np.transpose(mat)
+        mat = np.divide(mat, total_mat, out=np.zeros_like(mat), where=total_mat != 0)
+        mat -= np.divide((mat - 0.5), total_mat + 1, out=np.zeros_like(mat), where=total_mat != 0)
 
     np.fill_diagonal(mat, np.nan)
     sum_mat = mat.copy()
