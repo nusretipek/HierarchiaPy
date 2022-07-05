@@ -49,4 +49,4 @@ def test_get_dij():
     dij = hier_mat.get_Dij()
     assert (dij.shape == (5,5))
     assert (dij[0,0] == 0.0)
-    assert (dij[1,2] == np.float32(0.6429))
+    assert (dij[1,2] == 0.6429)
