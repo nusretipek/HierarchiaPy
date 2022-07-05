@@ -57,7 +57,7 @@ def directed_network_graph(self, **kwargs) -> matplotlib.figure.Figure:
 
         weights = nx.get_edge_attributes(network_graph, 'weight')
         weights_int = nx.get_edge_attributes(network_graph_int, 'weight')
-        weights_final = {key: (weights_int[key], weights[key]) for key in weights}
+        weights_final = {key: (weights_int[key], round(weights[key], 4)) for key in weights}
         nx.draw_networkx_edge_labels(network_graph, pos, edge_labels=weights_final)
         plt.tight_layout()
         figure.canvas.draw()
