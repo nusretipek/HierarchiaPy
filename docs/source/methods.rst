@@ -299,31 +299,4 @@ Result:
   
    {'a': 0, 'b': 1, 'd': 2, 'c': 3, 'e': 4}
 
-                        
-Directed Network Plot (Planar Layout)
--------------------------------
-
-.. autofunction:: _network_graph.directed_network_graph
-
-Example:
-
-.. code-block:: python
-   :linenos:
-   
-   mat = np.array([[0, 6, 9, 8, 5],
-                   [0, 0, 4, 6, 0],
-                   [0, 2, 0, 4, 7],
-                   [1, 0, 5, 0, 3],
-                   [0, 0, 2, 3, 0]], dtype='float32')
-   hier_mat = Hierarchia(mat)
-   fig = hier_mat.directed_network_graph(fig_size=(7, 7),
-                                         node_color=['red', 'blue', 'green', 'orange', 'yellow'],
-                                         font_size=12)
-
-Result:
-
-.. image:: https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/example_network_graph_2.png
-  :width: 500
-  :alt: Directed networkk graph (Planar layout)
-
-                        
+                         
