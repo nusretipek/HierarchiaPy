@@ -2,10 +2,119 @@ Metrics
 ===============================================
 
 
-Dij Matrix
+Directional consistency index (DCI)
 -------------------------------
 
-.. autofunction:: _steepness.get_Dij
+.. autofunction:: _dci.dci
+
+**Example:**
+
+.. code-block:: python
+   :linenos:
+   
+   mat = np.array([[0, 6, 1, 4, 6, 8, 5],
+                   [5, 0, 5, 0, 0, 2, 1],
+                   [0, 0, 0, 0, 0, 0, 0],
+                   [0, 0, 0, 0, 0, 0, 0],
+                   [2, 0, 0, 2, 0, 1, 0],
+                   [1, 15, 1, 0, 11, 0, 1],
+                   [4, 2, 0, 0, 0, 0, 0]], dtype='float32')
+
+   hier_mat = Hierarchia(mat, np.arange(0, mat.shape[0]))
+   dci = hier_mat.dci()
+   print(dci)   
+
+**Result:**
+
+.. code-block:: python
+  
+   0.6145
+
+                        
+Landau h & h'
+-------------------------------
+
+.. autofunction:: _landau_h.landau_h
+
+**Example:**
+
+.. code-block:: python
+   :linenos:
+   
+   mat = np.array([[0, 3, 10],
+                   [2, 0, 1],
+                   [0, 1, 0]], dtype='float32')
+
+   hier_mat = Hierarchia(mat, np.arange(0, mat.shape[0]))
+   landau_h = hier_mat.landau_h(improved=False)
+   print(landau_h)
+
+**Result:**
+
+   {'Landau_h': 0.75}
+
+**Example:**
+
+.. code-block:: python
+   :linenos:
+   
+   mat = np.array([[0, 6, 1, 4, 6, 8, 5],
+                   [5, 0, 5, 0, 0, 2, 1],
+                   [0, 0, 0, 0, 0, 0, 0],
+                   [0, 0, 0, 0, 0, 0, 0],
+                   [2, 0, 0, 2, 0, 1, 0],
+                   [1, 15, 1, 0, 11, 0, 1],
+                   [4, 2, 0, 0, 0, 0, 0]], dtype='float32')
+
+   hier_mat = Hierarchia(mat, np.arange(0, mat.shape[0]))
+   improved_landau_h = hier_mat.landau_h(improved=True, n_random=10000)
+   print(improved_landau_h)
+
+**Result:**
+
+   {'Improved_Landau_h': 0.7138, 'p_value_r': 0.0582, 'p_value_l': 0.9418}
+
+
+Circular dyads (d) & Kendall K
+-------------------------------
+
+.. autofunction:: _kendall_k.kendall_k
+
+**Example:**
+
+.. code-block:: python
+   :linenos:
+   
+   mat = np.array([[0, 6, 1, 4, 6, 8, 5],
+                   [5, 0, 5, 0, 0, 2, 1],
+                   [0, 0, 0, 0, 0, 0, 0],
+                   [0, 0, 0, 0, 0, 0, 0],
+                   [2, 0, 0, 2, 0, 1, 0],
+                   [1, 15, 1, 0, 11, 0, 1],
+                   [4, 2, 0, 0, 0, 0, 0]], dtype='float32')
+
+   hier_mat = Hierarchia(mat, np.arange(0, mat.shape[0]))
+   kendall_k = hier_mat.kendall_k(odd_K=False)
+   print(kendall_k)
+
+**Result:**
+
+   Computing, 256 possible matrices for unknown relationships...
+   {'d': 6.0, 
+    'ecdf_p_value': 0.196, 
+    'chi_sq': None, 
+    'df': None, 
+    'chi_sq_p_value': None, 
+    'unbiased_d': 4.0, 
+    'unbiased_p_ecdf': 0.0948, 
+    'K': 0.5714, 
+    'unbiased_K': 0.7143}
+
+
+Steepness Measure
+-------------------------------
+
+.. autofunction:: _steepness.get_steepness
 
 Example:
 
@@ -23,46 +132,55 @@ Example:
                    [3, 1, 3, 0, 0, 4, 1, 2, 0]])
    name_arr = np.array(["V", "VS", "B", "FJ", "PR", "VB", "TOR", "MU", "ZV"]) 
    hier_mat = Hierarchia(mat, name_arr)
-   dij_matrix = hier_mat.get_Dij()                           
-   print(dij_matrix)   
+   steep_dij = hier_mat.get_steepness(method='Dij')                           
+   print(steep_dij)   
 
 Result:
 
 .. code-block:: python
   
-   [[0.     0.8731 0.9352 0.9179 0.8784 0.8929 0.9219 0.9875 0.8793]
-    [0.1269 0.     0.8654 0.7258 0.5588 0.8871 0.9762 0.8077 0.97  ]
-    [0.0648 0.1346 0.     0.6724 0.7564 0.9615 0.75   0.9286 0.7083]
-    [0.0821 0.2742 0.3276 0.     0.9571 0.9872 0.9595 0.9559 0.9914]
-    [0.1216 0.4412 0.2436 0.0429 0.     0.8143 0.8548 0.75   0.9792]
-    [0.1071 0.1129 0.0385 0.0128 0.1857 0.     0.625  0.4333 0.7353]
-    [0.0781 0.0238 0.25   0.0405 0.1452 0.375  0.     0.6111 0.7   ]
-    [0.0125 0.1923 0.0714 0.0441 0.25   0.5667 0.3889 0.     0.8077]
-    [0.1207 0.03   0.2917 0.0086 0.0208 0.2647 0.3    0.1923 0.    ]]
+   0.7421
 
-                        
-Directed Network Plot (Planar Layout)
+
+Steepness Test
 -------------------------------
 
-.. autofunction:: _network_graph.directed_network_graph
+.. autofunction:: _steepness.steepness_test
 
 Example:
 
 .. code-block:: python
    :linenos:
    
-   mat = np.array([[0, 6, 9, 8, 5],
-                   [0, 0, 4, 6, 0],
-                   [0, 2, 0, 4, 7],
-                   [1, 0, 5, 0, 3],
-                   [0, 0, 2, 3, 0]], dtype='float32')
-   hier_mat = Hierarchia(mat)
-   fig = hier_mat.directed_network_graph(fig_size=(7, 7),
-                                         node_color=['red', 'blue', 'green', 'orange', 'yellow'],
-                                         font_size=12)
+   mat = np.array([[0, 58, 50, 61, 32, 37, 29, 39, 25],
+                   [8, 0, 22, 22, 9, 27, 20, 10, 48],
+                   [3, 3, 0, 19, 29, 12, 13, 19, 8],
+                   [5, 8, 9, 0, 33, 38, 35, 32, 57],
+                   [4, 7, 9, 1, 0, 28, 26, 16, 23],
+                   [4, 3, 0, 0, 6, 0, 7, 6, 12],
+                   [2, 0, 4, 1, 4, 4, 0, 5, 3],
+                   [0, 2, 1, 1, 5, 8, 3, 0, 10],
+                   [3, 1, 3, 0, 0, 4, 1, 2, 0]])
+   name_arr = np.array(["V", "VS", "B", "FJ", "PR", "VB", "TOR", "MU", "ZV"]) 
+   hier_mat = Hierarchia(mat, name_arr)
+   steep_test = hier_mat.steepness_test(method='Dij', n=9999)                           
+   print(steep_test)   
 
 Result:
 
-.. image:: https://raw.githubusercontent.com/nusretipek/HierarchiaPy/master/docs/pictures/example_network_graph_2.png
-  :width: 500
-  :alt: Directed networkk graph (Planar layout)
+.. code-block:: python
+  
+   {'steepness': 0.7421, 
+    'p_value_r': 0.0, 
+    'p_value_l': 1.0, 
+    'mean': 0.2943, 
+    'std_dev': 0.0712, 
+    'variance': 0.0051, 
+    'min': 0.0661, 
+    'max': 0.5756, 
+    'percentile_25': 0.2444, 
+    'percentile_50': 0.2919, 
+    'percentile_75': 0.3416, 
+    'count': 9999}
+    
+ 
