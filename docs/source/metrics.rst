@@ -51,6 +51,8 @@ Landau h & h'
 
 **Result:**
 
+.. code-block:: python
+
    {'Landau_h': 0.75}
 
 **Example:**
@@ -72,7 +74,11 @@ Landau h & h'
 
 **Result:**
 
-   {'Improved_Landau_h': 0.7138, 'p_value_r': 0.0582, 'p_value_l': 0.9418}
+.. code-block:: python
+
+   {'Improved_Landau_h': 0.7138, 
+    'p_value_r': 0.0582, 
+    'p_value_l': 0.9418}
 
 
 Circular dyads (d) & Kendall K
@@ -98,6 +104,8 @@ Circular dyads (d) & Kendall K
    print(kendall_k)
 
 **Result:**
+
+.. code-block:: python
 
    Computing, 256 possible matrices for unknown relationships...
    {'d': 6.0, 
