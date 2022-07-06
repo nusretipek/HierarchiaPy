@@ -39,7 +39,7 @@ def get_ecdf(n, runs=100000):
 
 def kendall_k(self, odd_K: bool = False) -> dict:
 
-    """Calculation of circular dyads (d), Kendall K (coefficient K) and relevant statistical tests of linearity
+    """Function to calculate of circular dyads (d), Kendall K (coefficient K) and statistical tests of linearity
 
     Parameters
     ----------
