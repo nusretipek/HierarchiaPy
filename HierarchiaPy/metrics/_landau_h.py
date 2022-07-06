@@ -2,8 +2,8 @@ import numpy as np
 import warnings
 
 
+# noinspection PyTypeChecker
 def landau_h(self, improved: bool = True, n_random: int = 10000) -> dict:
-
     """Function to calculate Landau h, improved Landau h (h') and statistical tests of linearity
 
       Parameters
@@ -43,7 +43,7 @@ def landau_h(self, improved: bool = True, n_random: int = 10000) -> dict:
                     break
         if check_mat:
             warnings.warn("Original Landau's h needs all relationships to be known. Consider using improved version.")
-            return None
+            return {'Landau_h': None}
         else:
             temp_mat = mat.copy()
             for idx in range(temp_mat.shape[0]):
@@ -67,51 +67,45 @@ def landau_h(self, improved: bool = True, n_random: int = 10000) -> dict:
 
     # Improved version
     if improved:
-        landau_h_master = []
-        counter = 0
-        for _ in range(n_random):
-            temp_mat = mat.copy()
-            for idx in range(temp_mat.shape[0]):
-                for idy in range(idx + 1, temp_mat.shape[0]):
-                    if temp_mat[idx, idy] == temp_mat[idy, idx] == 0:
-                        random_winner = np.array([idx, idy])
-                        np.random.shuffle(random_winner)
-                        temp_mat[random_winner[0], random_winner[1]] = 1
-                        temp_mat[random_winner[1], random_winner[0]] = 0
-                    elif temp_mat[idx, idy] == temp_mat[idy, idx]:
-                        temp_mat[idx, idy] = 1 / 2
-                        temp_mat[idy, idx] = 1 / 2
-                    elif temp_mat[idx, idy] > temp_mat[idy, idx]:
-                        temp_mat[idx, idy] = 1
-                        temp_mat[idy, idx] = 0
-                    else:
-                        temp_mat[idx, idy] = 0
-                        temp_mat[idy, idx] = 1
+        upper_indices = np.triu_indices_from(mat, k=1)
+        higher_indices = np.where(mat[upper_indices] > mat[upper_indices[1], upper_indices[0]])[0]
+        lower_indices = np.where(mat[upper_indices] < mat[upper_indices[1], upper_indices[0]])[0]
+        equal_indices = np.where((mat[upper_indices] == mat[upper_indices[1], upper_indices[0]]))[0]
+        zero_indices = np.where((mat[upper_indices] == mat[upper_indices[1], 
+                                                           upper_indices[0]]) & (mat[upper_indices] == 0))[0]
 
-            row_sums = np.sum(temp_mat, axis=1)
-            temp_h = (12 / ((temp_mat.shape[0] ** 3) - temp_mat.shape[0])) * np.sum(
-                ((row_sums - ((len(row_sums) - 1) / 2)) ** 2), axis=0)
-            landau_h_master.append(temp_h)
+        # Expand the matrix to 3D
+        mat = np.tile(mat, (n_random, 1, 1))
 
-            # step (ii)
-            temp_mat = mat.copy()
-            for idx in range(temp_mat.shape[0]):
-                for idy in range(idx + 1, temp_mat.shape[0]):
-                    random_winner = np.array([idx, idy])
-                    np.random.shuffle(random_winner)
-                    temp_mat[random_winner[0], random_winner[1]] = 1
-                    temp_mat[random_winner[1], random_winner[0]] = 0
+        # Landau h matrix with random tie breaking
+        mat[:, np.hstack([upper_indices[0][equal_indices, ], upper_indices[1][equal_indices, ]]),
+            np.hstack([upper_indices[1][equal_indices, ], upper_indices[0][equal_indices, ]])] = 0.5
+        mat[:, np.hstack([upper_indices[0][higher_indices, ], upper_indices[1][lower_indices, ]]),
+            np.hstack([upper_indices[1][higher_indices, ], upper_indices[0][lower_indices, ]])] = 1
+        mat[:, np.hstack([upper_indices[1][higher_indices, ], upper_indices[0][lower_indices, ]]),
+            np.hstack([upper_indices[0][higher_indices, ], upper_indices[1][lower_indices, ]])] = 0
+        random_winners = np.random.randint(0, 2, (len(mat), len(zero_indices),))
+        random_losers = 1 - random_winners
+        mat[:, upper_indices[0][zero_indices, ], upper_indices[1][zero_indices, ]] = random_winners
+        mat[:, upper_indices[1][zero_indices, ], upper_indices[0][zero_indices, ]] = random_losers
+        row_sums = np.sum(mat, axis=2)
+        improved_landau_h = (12 / ((mat.shape[1] ** 3) - mat.shape[1])) * np.sum(
+            ((row_sums - ((row_sums.shape[1] - 1) / 2)) ** 2), axis=1)
 
-            row_sums = np.sum(temp_mat, axis=1)
-            temp_h_r = (12 / ((temp_mat.shape[0] ** 3) - temp_mat.shape[0])) * np.sum(
-                ((row_sums - ((len(row_sums) - 1) / 2)) ** 2), axis=0)
-            if temp_h_r > temp_h:
-                counter += 1
+        # Fully random matrix
+        random_winners = np.random.randint(0, 2, (len(mat), len(upper_indices[0]),))
+        random_losers = 1 - random_winners
+        mat[:, upper_indices[0], upper_indices[1]] = random_winners
+        mat[:, upper_indices[1], upper_indices[0]] = random_losers
+        row_sums = np.sum(mat, axis=2)
+        improved_landau_h_right = (12 / ((mat.shape[1] ** 3) - mat.shape[1])) * np.sum(
+            ((row_sums - ((row_sums.shape[1] - 1) / 2)) ** 2), axis=1)
+        right_p_value = len(np.where(improved_landau_h_right > improved_landau_h)[0]) / n_random
 
-        # Refactor to a dictionary
-        results = {'Improved_Landau_h': round(sum(landau_h_master) / len(landau_h_master), 4),
-                   'p_value_r': round(counter / n_random, 4),
-                   'p_value_l': round((n_random - counter) / n_random, 4)}
+        # Create results dictionary
+        results = {'Improved_Landau_h': round(np.mean(improved_landau_h), 4),
+                   'p_value_r': round(right_p_value, 4),
+                   'p_value_l': round(1 - right_p_value, 4)}
 
         # Return statements
         return results
