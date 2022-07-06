@@ -2,9 +2,37 @@ import numpy as np
 import warnings
 
 
-def landau_h(self, improved=True, n_random=10000):
-    mat = self.mat.astype('float32')
+def landau_h(self, improved: bool = True, n_random: int = 10000) -> dict:
 
+    """Function to calculate Landau h, improved Landau h (h') and statistical tests of linearity
+
+      Parameters
+      ----------
+      :param improved: bool
+        The improved version of the Landau h (h'). Form ore details see de Vries (1998).
+      :param n_random: int
+        If improved version is calculated, it is the parameter to determine number of random matrices to calculate
+        h' and corresponding p-values.
+
+      Returns
+      -------
+      results : dict
+          The result dictionary depends on the argument <improved>, the original version (improved=False) return a
+          dictionary with single key named 'Landau_h'. If the improved version is asked (improved=True), the improved
+          version of the Landau h (h') is returned with right and left p-values.
+
+      References
+      ----------
+      * Landau, H. G. 1951a. On dominance relations and the structure of animal societies. I: effect of inherent
+      characteristics. Bull. Math. Biophys., 13, 1-19
+      * de Vries, H.1995. An improved test of linearity in dominance hierarchies containing unknown or tied relationships.
+      Animal Behaviour, 50,1375e1389.
+      """
+
+    # Matrix manipulation
+    mat = self.mat.astype('float64')
+
+    # Original version
     if not improved:
         check_mat = False
         temp_mat = mat.copy()
@@ -33,8 +61,11 @@ def landau_h(self, improved=True, n_random=10000):
             row_sums = np.sum(temp_mat, axis=1)
             landaus_h = (12 / ((temp_mat.shape[0] ** 3) - temp_mat.shape[0])) * np.sum(
                 ((row_sums - ((len(row_sums) - 1) / 2)) ** 2), axis=0)
+
+            # Return statements
             return {'Landau_h': round(landaus_h, 4)}
 
+    # Improved version
     if improved:
         landau_h_master = []
         counter = 0
@@ -82,4 +113,5 @@ def landau_h(self, improved=True, n_random=10000):
                    'p_value_r': round(counter / n_random, 4),
                    'p_value_l': round((n_random - counter) / n_random, 4)}
 
+        # Return statements
         return results
