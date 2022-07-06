@@ -111,7 +111,7 @@ Circular dyads (d) & Kendall K
     'unbiased_K': 0.7143}
 
 
-Steepness Measure
+Steepness measure
 -------------------------------
 
 .. autofunction:: _steepness.get_steepness
@@ -142,7 +142,7 @@ Result:
    0.7421
 
 
-Steepness Test
+Steepness test
 -------------------------------
 
 .. autofunction:: _steepness.steepness_test
