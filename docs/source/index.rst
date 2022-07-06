@@ -16,5 +16,5 @@ Contents
    intro
    getting-started
    methods
-   utilities
    metrics
+   utilities
