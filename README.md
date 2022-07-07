@@ -93,4 +93,5 @@ v 0.2.0 - Inclusion of linearity statistics & tests <br>
 v 0.2.1 - Hot-fix for linearity tests <br>
 v 0.2.2 - I&SI 98, performance improvement  <br>
 v 0.2.3 - Landau's h classic improvement  <br>
-v 0.2.4 - Steepness, DCI and network vizualization added  <br>
+v 0.2.4 - Steepness, DCI and network vizualization added <br>
+v 0.2.5 - Performance improvement and vectorization of several modules <br>
