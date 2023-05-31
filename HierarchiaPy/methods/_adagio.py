@@ -56,7 +56,7 @@ def adagio(self, preprocessing: bool = False, plot_network: bool = False, rank: 
         mat = np.where(mat < 0, 0, mat)
     
     # Network 
-    network_graph = nx.from_numpy_matrix(mat, create_using=nx.DiGraph(directed=True))
+    network_graph = nx.from_numpy_array(mat, create_using=nx.DiGraph(directed=True))
     
     # Plot network
     if plot_network:
