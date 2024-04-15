@@ -85,6 +85,12 @@ Documentation
 
 For full functionality and reference, see the [documentation](https://hierarchiapy.readthedocs.io/en/latest/)
 
+Citation
+---------
+
+Ipek, Nusret, et al. "Quantifying agonistic interactions between group-housed animals to derive social hierarchies using computer vision: a case study with commercially group-housed rabbits." Scientific Reports 13.1 (2023): 14138.
+
+
 Change Log
 ---------
 
